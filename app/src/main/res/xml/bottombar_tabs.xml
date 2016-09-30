@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_news"
+        icon="@drawable/ic_tech"
+        title="新闻" />
+    <tab
+        id="@+id/tab_joke"
+        icon="@drawable/ic_sport"
+        title="段子" />
+    <tab
+        id="@+id/tab_tool"
+        icon="@drawable/ic_vedio"
+        title="工具" />
+</tabs>

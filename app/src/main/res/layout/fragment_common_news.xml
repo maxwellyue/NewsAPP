@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srf_fragment_technews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:id="@+id/lv_fragment_technews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/common_bg"
+            android:dividerHeight="12dp"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>
