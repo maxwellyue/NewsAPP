@@ -5,14 +5,9 @@ import com.yue.maxwell.newsapp.bean.NewsBean;
 import com.yue.maxwell.newsapp.common.Constants;
 import com.yue.maxwell.newsapp.net.BaseResultFunc;
 import com.yue.maxwell.newsapp.net.NetManager;
-import com.yue.maxwell.newsapp.net.OKHttpFactory;
-import com.yue.maxwell.newsapp.net.exception.ApiException;
 import com.yue.maxwell.newsapp.news.NewsService;
 import com.yue.maxwell.newsapp.news.view.NewsView;
 
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -44,13 +39,12 @@ public class NewsPresenterImpl implements NewsPresenter{
     public void loadNews(String type) {
 
         mNewsView.showProgress();
-        mNewsService.getNewsBean(type, Constants.JUHE_API_KEYVALUE)
+        mNewsService.getNewsBean(type, Constants.JUHE_APIKEY)
                 .map(new BaseResultFunc<NewsBean>())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseSubscriber<NewsBean>(){
-
                     @Override
                     public void onCompleted() {
 

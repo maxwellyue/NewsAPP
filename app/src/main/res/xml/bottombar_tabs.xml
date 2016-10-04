@@ -7,7 +7,7 @@
     <tab
         id="@+id/tab_joke"
         icon="@drawable/ic_sport"
-        title="段子" />
+        title="聊天" />
     <tab
         id="@+id/tab_tool"
         icon="@drawable/ic_vedio"

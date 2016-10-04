@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">NewsApp</string>
+    <string name="chat_hint">快点跟我聊天呀</string>
+    <string name="bt_chat_send">发送</string>
+    <string name="chat_init_hint">快点和我聊天呀</string>
 </resources>

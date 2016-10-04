@@ -16,9 +16,10 @@ public class Constants {
 
     /*public static final String BAIDU_API_KEY = "apikey";
     public static final String BAIDU_API_VALUE = "26af7a2ae9cc0ba38b956c95619b970c";
-    public static final String BASE_URL = "http://apis.baidu.com/txapi/world/";*/
+    public static final String BASE_URL_JUHE = "http://apis.baidu.com/txapi/world/";*/
 
-    public static final String JUHE_API_KEY = "key";
-    public static final String JUHE_API_KEYVALUE = "72058c9b31ddf4621bb6618151af14b6";
-    public static final String BASE_URL = "http://v.juhe.cn/toutiao/";
+    public static final String JUHE_APIKEY = "72058c9b31ddf4621bb6618151af14b6";
+    public static final String BASE_URL_JUHE = "http://v.juhe.cn/toutiao/";
+    public static final String BASE_URL_TULING = "http://www.tuling123.com/openapi/";
+    public static final String TULING_APIKEY = "a94cd05c72a945c59687360ba20d1e9d";
 }

@@ -18,4 +18,13 @@
     <color name="toolbar_activity_main_bg">#3F51B5</color>
     <color name="cardBackgroundColor">#ffffff</color>
     <color name="common_text_color">#545353</color>
+    <color name="et_chat_color">#000000</color>
+    <color name="bt_chat_bg">#1FAA1D</color>
+    <color name="chat_content_bg">#17891e</color>
+    <color name="tv_chat_content">#484747</color>
+    <color name="chat_input_bg">#9DE85A</color>
+    <color name="chat_output_bg">#ffffff</color>
+    <color name="chat_bg">#EBEBEB</color>
+    <color name="chat_date_bg">#D4D4D4</color>
+    <color name="chat_circleimage_border_color">#fffefe</color>
 </resources>

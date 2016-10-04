@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import com.roughike.bottombar.BottomBar;
 import com.yue.maxwell.newsapp.R;
 import com.yue.maxwell.newsapp.base.BaseActivity;
-import com.yue.maxwell.newsapp.joke.JokeFragment;
+import com.yue.maxwell.newsapp.chat.widget.ChatFragment;
 import com.yue.maxwell.newsapp.news.widget.NewsFragment;
 import com.yue.maxwell.newsapp.tool.ToolFragment;
 
@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity {
 
     private NewsFragment mNewsFragment;
-    private JokeFragment mSportNewsFragment;
+    private ChatFragment mSportNewsFragment;
     private ToolFragment mVedioNewsFragment;
 
     @BindView(R.id.toolbar_activity_main)
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.tab_joke:
                         if(mSportNewsFragment == null){
-                            mSportNewsFragment = new JokeFragment();
+                            mSportNewsFragment = new ChatFragment();
                             transaction.add(R.id.fl_activity_main_content, mSportNewsFragment);
                         }
                         transaction.show(mSportNewsFragment);
