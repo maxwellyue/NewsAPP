@@ -1,53 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/chat_bg">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:background="@color/common_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <!--聊天内容显示区域-->
 
-    <ListView
-        android:id="@+id/lv_fragment_chat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@color/chat_bg"
-        android:dividerHeight="@dimen/chat_item"
-        android:layout_above="@+id/ll_fragment_chat_opratearea"/>
-
-    <!--下方输入文字、发送区域-->
     <LinearLayout
-        android:id="@+id/ll_fragment_chat_opratearea"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:weightSum="7">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/et_fragment_chat"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/bt_fragment_chat_goto"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="4dp"
-            android:layout_weight="6"
-            android:background="@drawable/shape_et_chat_inout"
-            android:padding="6dp"
-            android:textColor="@color/et_chat_color"
-            android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/tv_fragment_chat_send"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:background="@drawable/shape_tv_chat_send"
-            android:gravity="center"
-            android:paddingBottom="6dp"
-            android:paddingTop="6dp"
-            android:text="@string/bt_chat_send"
-            android:textColor="#ffffff"
+            android:background="@drawable/shape_rounded_rectangle"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="现在就开始聊天"
+            android:textColor="#000000"
             android:textSize="16sp"/>
     </LinearLayout>
+
+
 </RelativeLayout>

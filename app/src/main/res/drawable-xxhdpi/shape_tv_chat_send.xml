@@ -3,6 +3,6 @@
  android:shape="rectangle">
 
     <corners android:radius="2dp" />
-    <solid android:color="@color/bt_chat_bg"/>
+    <solid android:color="@color/chat_bt_bg"/>
 
 </shape>

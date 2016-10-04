@@ -11,4 +11,11 @@
     <dimen name="chat_item_input">100dp</dimen>
     <dimen name="chat_item">8dp</dimen>
     <dimen name="magin_chat_iamge_content">6dp</dimen>
+    <dimen name="chat_menu_title">16sp</dimen>
+    <dimen name="chat_menu_info">14sp</dimen>
+    <dimen name="chat_news_title">16sp</dimen>
+    <dimen name="chat_news_source">14sp</dimen>
+    <dimen name="chat_href_url">16sp</dimen>
+    <dimen name="chat_input_icon">40dp</dimen>
+    <dimen name="chat_output_icon">40dp</dimen>
 </resources>

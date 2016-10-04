@@ -1,6 +1,8 @@
 package com.yue.maxwell.newsapp.adapter;
 
 import android.content.Context;
+import android.os.Parcelable;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,10 +16,10 @@ import com.yue.maxwell.newsapp.bean.ChatMsg;
 import com.yue.maxwell.newsapp.bean.ChatNewsBean;
 import com.yue.maxwell.newsapp.bean.ChatTextBean;
 import com.yue.maxwell.newsapp.utils.DateUtil;
+import com.yue.maxwell.newsapp.utils.IntentUtil;
 
 import java.util.Date;
 import java.util.List;
-import java.util.StringJoiner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +36,7 @@ import butterknife.ButterKnife;
  * 修改人：
  */
 
-public class ChatListAdapter<T> extends BaseAdapter {
+public class ChatListAdapter<T extends Parcelable> extends BaseAdapter {
 
     private Context mContext;
 
@@ -138,13 +140,19 @@ public class ChatListAdapter<T> extends BaseAdapter {
 
         //赋值
         if (type == ChatMsg.Type.INPUT) {
-            inputHolder.content.setText((String)msg.getMsg());
+            inputHolder.content.setText(((ChatTextBean)msg.getMsg()).getText());
             inputHolder.date.setText(DateUtil.getHourAndMinute(new Date()));
         } else if (type == ChatMsg.Type.OUTPUT_TEXT) {
             outputText.content.setText(((ChatTextBean)msg.getMsg()).getText());
         } else if (type == ChatMsg.Type.OUTPUT_HREF) {
             outputHref.content.setText(((ChatHrefBean)msg.getMsg()).getText());
-            outputHref.url.setText(((ChatHrefBean)msg.getMsg()).getUrl());
+            outputHref.url.setText("戳我查看");
+            outputHref.url.setOnClickListener((v) -> {
+                IntentUtil.startWebActivity(mContext, ((ChatHrefBean)msg.getMsg()).getUrl());
+            });
+
+
+
         } else if (type == ChatMsg.Type.OUTPUT_NEWS) {
             outputNews.content.setText(((ChatNewsBean)msg.getMsg()).getText());
 
@@ -154,10 +162,12 @@ public class ChatListAdapter<T> extends BaseAdapter {
 
                     TextView title = viewHolder.getView(R.id.tv_item_item_lv_chat_news_title);
                     TextView source = viewHolder.getView(R.id.tv_item_item_lv_chat_news_source);
-                    TextView url = viewHolder.getView(R.id.tv_item_item_lv_chat_news_detailurl);
-                    title.setText(itemData.getArticle());
-                    source.setText(itemData.getSource());
-                    url.setText(itemData.getDetailurl());
+                    title.setText(!TextUtils.isEmpty(itemData.getArticle()) ? itemData.getArticle() : "戳我查看");
+                    source.setText("(来自:" + itemData.getSource() + ")");
+
+                    title.setOnClickListener((v) ->{
+                        IntentUtil.startWebActivity(mContext, itemData.getDetailurl());
+                    });
                 }
             });
         } else {
@@ -168,10 +178,12 @@ public class ChatListAdapter<T> extends BaseAdapter {
 
                     TextView name = viewHolder.getView(R.id.tv_item_item_lv_chat_menu_name);
                     TextView info = viewHolder.getView(R.id.tv_item_item_lv_chat_menu_info);
-                    TextView url = viewHolder.getView(R.id.tv_item_item_lv_chat_menu_detailurl);
-                    name.setText(itemData.getName());
+                    name.setText(!TextUtils.isEmpty(itemData.getName())? itemData.getName() : "戳我查看");
                     info.setText(itemData.getInfo());
-                    url.setText(itemData.getDetailurl());
+
+                    name.setOnClickListener((v) -> {
+                        IntentUtil.startWebActivity(mContext, itemData.getDetailurl());
+                    });
                 }
             });
 

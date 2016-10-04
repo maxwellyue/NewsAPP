@@ -18,13 +18,23 @@
     <color name="toolbar_activity_main_bg">#3F51B5</color>
     <color name="cardBackgroundColor">#ffffff</color>
     <color name="common_text_color">#545353</color>
-    <color name="et_chat_color">#000000</color>
-    <color name="bt_chat_bg">#1FAA1D</color>
-    <color name="chat_content_bg">#17891e</color>
-    <color name="tv_chat_content">#484747</color>
+
+    <!--聊天界面-->
+    <color name="chat_et_color">#000000</color>
+    <color name="chat_bt_bg">#1FAA1D</color>
+    <color name="chat_tv_content">#484747</color>
     <color name="chat_input_bg">#9DE85A</color>
     <color name="chat_output_bg">#ffffff</color>
     <color name="chat_bg">#EBEBEB</color>
     <color name="chat_date_bg">#D4D4D4</color>
     <color name="chat_circleimage_border_color">#fffefe</color>
+    <color name="chat_news_title">#06c713</color>
+    <color name="chat_news_source">#5c5c5c</color>
+    <color name="chat_menu_title">#06c713</color>
+    <color name="chat_menu_info">#5c5c5c</color>
+    <color name="chat_href_url">#06c713</color>
+    <color name="toolbar_activity_chat_title">#ffffff</color>
+    <color name="chat_tv_timer_bg">#a0b648</color>
+    <color name="chat_tv_timer">#a65c08</color>
+
 </resources>

@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginEnd="100dp"
-              android:layout_marginRight="100dp"
-              android:background="@color/chat_content_bg"
-              android:orientation="vertical">
+              android:orientation="horizontal">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_item_lv_fragment_chat_menu_icon"
+        android:layout_width="@dimen/chat_output_icon"
+        android:layout_height="@dimen/chat_output_icon"
+        android:layout_marginLeft="@dimen/magin_chat_iamge_content"
+        android:layout_marginStart="@dimen/magin_chat_iamge_content"
+        android:src="@drawable/chat_robot"/>
 
-    <TextView
-        android:padding="10dp"
-        android:text="看下面的菜谱啊"
-        android:textSize="@dimen/tv_chat_content"
-        android:textColor="@color/tv_chat_content"
-        android:id="@+id/tv_item_lv_fragment_chat_menu_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ListView
-        android:id="@+id/lv_item_lv_fragment_chat_menu_list"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/chat_item_left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="@dimen/chat_item_left"
+        android:layout_marginStart="10dp">
+        <com.cpiz.android.bubbleview.BubbleLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:bb_arrowDirection="Left"
+            app:bb_arrowTo="@id/iv_item_lv_fragment_chat_menu_icon"
+            app:bb_cornerRadius="4dp"
+            app:bb_fillColor="@color/chat_output_bg">
+            <TextView
+                android:id="@+id/tv_item_lv_fragment_chat_menu_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/chat_tv_content"
+                android:textSize="@dimen/tv_chat_content"/>
+            <ListView
+                android:id="@+id/lv_item_lv_fragment_chat_menu_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"/>
+        </com.cpiz.android.bubbleview.BubbleLinearLayout>
+    </RelativeLayout>
+
+
 </LinearLayout>

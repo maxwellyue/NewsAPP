@@ -1,17 +1,15 @@
 package com.yue.maxwell.newsapp.chat.presenter;
 
+import android.os.Parcelable;
 import android.support.v4.util.ArrayMap;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.yue.maxwell.newsapp.base.BaseSubscriber;
 import com.yue.maxwell.newsapp.bean.ChatHrefBean;
 import com.yue.maxwell.newsapp.bean.ChatMenuBean;
 import com.yue.maxwell.newsapp.bean.ChatMsg;
 import com.yue.maxwell.newsapp.bean.ChatNewsBean;
 import com.yue.maxwell.newsapp.bean.ChatTextBean;
-import com.yue.maxwell.newsapp.bean.TulingApiInfoBean;
 import com.yue.maxwell.newsapp.chat.ChatService;
 import com.yue.maxwell.newsapp.chat.view.ChatView;
 import com.yue.maxwell.newsapp.common.Constants;
@@ -22,9 +20,7 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -41,7 +37,7 @@ import rx.schedulers.Schedulers;
  * 修改人：
  */
 
-public class ChatPresenterImpl<T> implements ChatPresenter {
+public class ChatPresenterImpl<T extends Parcelable> implements ChatPresenter {
 
     private static final String TAG = ChatPresenterImpl.class.getSimpleName();
     private ChatView mChatView;

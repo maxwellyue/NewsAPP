@@ -1,5 +1,7 @@
 package com.yue.maxwell.newsapp.chat.view;
 
+import android.os.Parcelable;
+
 import com.yue.maxwell.newsapp.bean.ChatMsg;
 
 /**
@@ -14,7 +16,7 @@ import com.yue.maxwell.newsapp.bean.ChatMsg;
  * 修改人：
  */
 
-public interface ChatView<T> {
+public interface ChatView<T extends Parcelable> {
 
     void addMsgItem(ChatMsg<T> replyMsg);
     void showErrorMsg(String errorMsg);
