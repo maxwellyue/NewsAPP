@@ -16,8 +16,9 @@ import java.util.List;
 /*
 使用方式示例：
 其中，mRootLayout为xml布局文件中的顶层布局（根布局）
+this是传入的上下文
 
-         final SoftKeyboardStateWatcher watcher = new SoftKeyboardStateWatcher(mRootLayout);
+         final SoftKeyboardStateWatcher watcher = new SoftKeyboardStateWatcher(mRootLayout,this);
                 watcher.addSoftKeyboardStateListener(
                         new SoftKeyboardStateWatcher.SoftKeyboardStateListener() {
                             @Override
