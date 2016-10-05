@@ -41,10 +41,6 @@ public class ChatFragment extends BaseFragment {
     @BindView(R.id.cb_fragment_chat_remember_pwd)
     CheckBox mCbRememberPwd;
 
-
-    private boolean mHasUser;
-    private boolean mRememberPwd;
-
     @Override
     public int getLayoutId() {
         return R.layout.fragment_chat;
@@ -54,17 +50,24 @@ public class ChatFragment extends BaseFragment {
     public void initData() {
 
         //用户信息展示
-        mHasUser = SPUtil.getBoolean(getActivity(), Constants.HAS_USER, false);
-        mRememberPwd = getRememberState();
-        if (mHasUser) {
+        if (isHasUser()) {
             mEtUserName.setText(getUserName());
-            if(mRememberPwd){
+            if(isPwdRemembered()){
                 mEtUserPwd.setText(getUserPwd());
             }
         }
 
-        mCbRememberPwd.setChecked(mRememberPwd);
-        mTvGo.setEnabled(mHasUser && mCbRememberPwd.isChecked());
+        mCbRememberPwd.setChecked(isPwdRemembered());
+        mTvGo.setEnabled(isHasUser() && mCbRememberPwd.isChecked());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(! isPwdRemembered()){
+            mEtUserPwd.setText("");
+            mTvGo.setEnabled(false);
+        }
     }
 
     @Override
@@ -115,7 +118,7 @@ public class ChatFragment extends BaseFragment {
             String name = mEtUserName.getText().toString().trim();
             String pwd = mEtUserPwd.getText().toString().trim();
 
-            if(mHasUser){//已经保存过用户信息
+            if(isHasUser()){//已经保存过用户信息
                 if(!name.equals(getUserName())){//改了名字（密码改不改都执行）
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("确定更换用户名吗?")
@@ -174,7 +177,11 @@ public class ChatFragment extends BaseFragment {
         });
     }
 
-    private boolean getRememberState(){
+    private boolean isHasUser(){
+        return SPUtil.getBoolean(getActivity(), Constants.HAS_USER, false);
+    }
+
+    private boolean isPwdRemembered(){
         return SPUtil.getBoolean(getActivity(), Constants.REMEMBER_PWD, false);
     }
 
@@ -198,5 +205,7 @@ public class ChatFragment extends BaseFragment {
         SPUtil.setBoolean(getActivity(), Constants.HAS_USER, true);
         SPUtil.setBoolean(getActivity(), Constants.REMEMBER_PWD, mCbRememberPwd.isChecked());
     }
+
+
 
 }
