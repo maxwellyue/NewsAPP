@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:textColor="@color/toolbar_activity_main_title"
                     android:textSize="@dimen/tv_toolbar_title"
                     android:text="@string/app_name"
                     android:layout_width="wrap_content"

@@ -19,6 +19,11 @@
     <color name="cardBackgroundColor">#ffffff</color>
     <color name="common_text_color">#545353</color>
 
+    <!--toolbar的一些颜色-->
+    <color name="toolbar_activity_main_title">#ffffff</color>
+    <color name="toolbar_activity_chat_title">#ffffff</color>
+
+
     <!--聊天界面-->
     <color name="chat_et_color">#000000</color>
     <color name="chat_bt_bg">#1FAA1D</color>
@@ -33,7 +38,6 @@
     <color name="chat_menu_title">#06c713</color>
     <color name="chat_menu_info">#5c5c5c</color>
     <color name="chat_href_url">#06c713</color>
-    <color name="toolbar_activity_chat_title">#ffffff</color>
     <color name="chat_tv_timer_bg">#a0b648</color>
     <color name="chat_tv_timer">#a65c08</color>
     <color name="et_hint_chat_user">#797777</color>
@@ -43,5 +47,8 @@
     <color name="chat_fragment_goto">#ffffff</color>
     <color name="chat_fragment_tv_goto_bg_enable">#3F51B5</color>
     <color name="chat_fragment_tv_goto_bg">#a7b1ea</color>
+
+
+
 
 </resources>

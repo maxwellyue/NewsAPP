@@ -146,7 +146,7 @@ public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
 
         });
 
-        final SoftKeyboardStateWatcher watcher = new SoftKeyboardStateWatcher(mRootLayout);
+        final SoftKeyboardStateWatcher watcher = new SoftKeyboardStateWatcher(mRootLayout, this);
         watcher.addSoftKeyboardStateListener(
                 new SoftKeyboardStateWatcher.SoftKeyboardStateListener() {
                     @Override

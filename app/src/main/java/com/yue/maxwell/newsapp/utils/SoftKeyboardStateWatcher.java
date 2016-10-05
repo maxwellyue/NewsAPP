@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 
 import com.yue.maxwell.newsapp.application.NewsApplication;
+import com.yue.maxwell.newsapp.common.Constants;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -44,12 +45,19 @@ public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayout
     private final View activityRootView;
     private int        lastSoftKeyboardHeightInPx;
     private boolean    isSoftKeyboardOpened;
+    private Context mContext;
 
-    public SoftKeyboardStateWatcher(View activityRootView) {
+    public SoftKeyboardStateWatcher(View activityRootView, Context context) {
+
+        this(activityRootView, false);
+        this.mContext = context;
+    }
+
+    private SoftKeyboardStateWatcher(View activityRootView) {
         this(activityRootView, false);
     }
 
-    public SoftKeyboardStateWatcher(View activityRootView, boolean isSoftKeyboardOpened) {
+    private SoftKeyboardStateWatcher(View activityRootView, boolean isSoftKeyboardOpened) {
         this.activityRootView     = activityRootView;
         this.isSoftKeyboardOpened = isSoftKeyboardOpened;
         activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
@@ -70,16 +78,16 @@ public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayout
             notifyOnSoftKeyboardClosed();
         }*/
 
-        //软键盘没有设置要求
+        //下面这种方式则对软键盘没有设置要求
        final Rect r = new Rect();
         //r will be populated with the coordinates of your view that area still visible.
         activityRootView.getWindowVisibleDisplayFrame(r);
 
         final int heightDiff = activityRootView.getRootView().getHeight() - (r.bottom - r.top);
-        if (!isSoftKeyboardOpened && heightDiff > dpToPx(NewsApplication.getContext(), 200)) { // if more than 100 pixels, its probably a keyboard...
+        if (!isSoftKeyboardOpened && heightDiff > dpToPx(mContext, 200)) { // if more than 100 pixels, its probably a keyboard...
             isSoftKeyboardOpened = true;
             notifyOnSoftKeyboardOpened(heightDiff);
-        } else if (isSoftKeyboardOpened && heightDiff < dpToPx(NewsApplication.getContext(), 200)) {
+        } else if (isSoftKeyboardOpened && heightDiff < dpToPx(mContext, 200)) {
             isSoftKeyboardOpened = false;
             notifyOnSoftKeyboardClosed();
         }
