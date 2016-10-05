@@ -33,66 +33,22 @@ import java.util.function.ToDoubleBiFunction;
  * 修改人：
  */
 
-public class FileUtil<T extends Parcelable> {
+public class FileUtil<T> {
 
-    public List<ChatMsg<T>> loadChatMsgFromLocal(){
-        File file = NewsApplication.getContext().getCacheDir();
-        if(!file.exists()){
-            file.mkdirs();
-        }
-        try {
-            DiskLruCache cache = DiskLruCache.open(file, 0, 1, 10*1024*1024);
-            DiskLruCache.Snapshot snapshot= null;
-            snapshot = cache.get("123456");
-
-            InputStream inputStream = snapshot.getInputStream(0);
-            byte[] bytes = new byte[inputStream.available()];
-            inputStream.read(bytes);
-            Parcel parcel = Parcel.obtain();
-            parcel.unmarshall(bytes, 0, bytes.length);
-            parcel.setDataPosition(0);
-
-            List<ChatMsg<T>> list = new ArrayList<>();
-
-            // TODO: 2016/10/4 0004 有泛型，不知如何解决
-            //parcel.readTypedList(list, ChatMsg.CREATOR);
-
-            inputStream.close();
-            snapshot.close();
-            parcel.recycle();
-            return list;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+    public List<ChatMsg<T>> loadChatMsgFromLocal(Context context){
+        ACache aCache = ACache.get(context);
+        return (List<ChatMsg<T>>) aCache.getAsObject("1");
     }
 
-    public void saveChatMsgToLocal(List<ChatMsg<T>> list){
-
-
-        File file = NewsApplication.getContext().getCacheDir();
-        if(!file.exists()){
-            file.mkdirs();
-        }
-        try {
-            DiskLruCache cache = DiskLruCache.open(file, 0, 1, 10*1024*1024);
-            DiskLruCache.Editor editor = cache.edit("123456");
-            OutputStream outputStream = editor.newOutputStream(0);
-            BufferedOutputStream bos = new BufferedOutputStream(outputStream);
-            Parcel parcel = Parcel.obtain();
-            parcel.writeTypedList(list);
-            bos.write(parcel.marshall());
-            bos.flush();
-            bos.close();
-            outputStream.flush();
-            outputStream.close();
-            editor.commit();
-            cache.flush();
-            parcel.recycle();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void saveChatMsgToLocal(Context context, List<ChatMsg<T>> list){
+        ACache aCache = ACache.get(context);
+        aCache.put("1", (ArrayList)list);
     }
+
+    public static void clearLocalChatMsg(Context context){
+        ACache aCache = ACache.get(context);
+        aCache.clear();
+    }
+
 }
 

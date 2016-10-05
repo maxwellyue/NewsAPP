@@ -53,7 +53,8 @@ public class NewsFragment extends BaseFragment {
     }
 
     private void setFragmentAdapter() {
-        NewsFragmentAdapter adapter = new NewsFragmentAdapter(getActivity().getSupportFragmentManager());
+        //这里要使用this.getChildFragmentManager()，否则会看到各种fragment重叠的现象
+        NewsFragmentAdapter adapter = new NewsFragmentAdapter(this.getChildFragmentManager());
         adapter.addFragment(NewsListFragment.newInstance(FRAGMENT_TOUTIAO), "头条");
         adapter.addFragment(NewsListFragment.newInstance(FRAGMENT_TECHNEWS), "科技");
         adapter.addFragment(NewsListFragment.newInstance(FRAGMENT_SPORTNEWS), "体育");

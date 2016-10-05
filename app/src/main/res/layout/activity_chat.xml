@@ -15,11 +15,12 @@
         android:layout_alignParentTop="true"
         android:background="@color/toolbar_activity_main_bg">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
             <ImageView
+                android:padding="6dp"
+                android:layout_centerVertical="true"
                 android:id="@+id/iv_toolbar_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
                 android:layout_marginStart="20dp"
                 android:src="@drawable/arrow_back_white"/>
             <TextView
+                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -36,7 +38,18 @@
                 android:text="聊天"
                 android:textColor="@color/toolbar_activity_chat_title"
                 android:textSize="16sp"/>
-        </LinearLayout>
+            <ImageView
+                android:padding="6dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/iv_toolbar_delete"
+                android:src="@drawable/delete_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
     <!--聊天内容显示区域-->
@@ -83,7 +96,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="4dp"
                 android:layout_weight="9"
-                android:background="@drawable/shape_et_chat_inout"
+                android:background="@drawable/shape_et_chat_input"
                 android:padding="10dp"
                 android:textColor="@color/chat_et_color"
                 android:textSize="16sp"/>

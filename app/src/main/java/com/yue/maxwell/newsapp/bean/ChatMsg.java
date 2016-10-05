@@ -1,8 +1,5 @@
 package com.yue.maxwell.newsapp.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,8 +18,9 @@ import java.util.Date;
  * 修改人：
  */
 
-public class ChatMsg<T extends Parcelable> implements Parcelable{
+public class ChatMsg<T> implements Serializable{
 
+    private static final long serialVersionUID = 2645013734898809713L;
     /**
      * 消息类型
      */
@@ -44,18 +42,6 @@ public class ChatMsg<T extends Parcelable> implements Parcelable{
         this.msg = msg;
         this.dateStr = setDate(new Date());
     }
-
-    public static final Creator<ChatMsg> CREATOR = new Creator<ChatMsg>() {
-        @Override
-        public ChatMsg createFromParcel(Parcel in) {
-            return new ChatMsg(in);
-        }
-
-        @Override
-        public ChatMsg[] newArray(int size) {
-            return new ChatMsg[size];
-        }
-    };
 
     private String setDate(Date date) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -81,53 +67,6 @@ public class ChatMsg<T extends Parcelable> implements Parcelable{
     public void setType(Type type) {
         this.mType = type;
     }
-
-    //=================================序列化相关=================================
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(dateStr);
-        parcel.writeSerializable(mType);
-        parcel.writeString(msg.getClass().getName());
-        parcel.writeParcelable(msg, i);
-    }
-
-
-
-    private ChatMsg(Parcel in){
-        dateStr = in.readString();
-        mType = (Type) in.readSerializable();
-        String dataName = in.readString();
-        try {
-            msg = in.readParcelable(Class.forName(dataName).getClassLoader());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public enum Type

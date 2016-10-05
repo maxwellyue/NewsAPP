@@ -36,7 +36,7 @@ import butterknife.ButterKnife;
  * 修改人：
  */
 
-public class ChatListAdapter<T extends Parcelable> extends BaseAdapter {
+public class ChatListAdapter<T> extends BaseAdapter {
 
     private Context mContext;
 

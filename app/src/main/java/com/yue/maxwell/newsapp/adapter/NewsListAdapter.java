@@ -37,14 +37,14 @@ public class NewsListAdapter extends CommonAdapter<NewsBean.SingelNews> {
         TextView title = viewHolder.getView(R.id.tv_item_lv_fragment_news_title);
         TextView source = viewHolder.getView(R.id.tv_item_lv_fragment_news_source);
         TextView time = viewHolder.getView(R.id.tv_item_lv_fragment_news_time);
-        ImageView image1 = viewHolder.getView(R.id.iv_item_lv_fragment_news_pic1);
-        ImageView image2 = viewHolder.getView(R.id.iv_item_lv_fragment_news_pic2);
-        ImageView image3 = viewHolder.getView(R.id.iv_item_lv_fragment_news_pic3);
+        ImageView image = viewHolder.getView(R.id.iv_item_lv_fragment_news_pic);
+        //ImageView image2 = viewHolder.getView(R.id.iv_item_lv_fragment_news_pic2);
+        //ImageView image3 = viewHolder.getView(R.id.iv_item_lv_fragment_news_pic3);
 
 
-        Glide.with(mContext).load(itemData.getThumbnail_pic_s()).into(image1);
-        Glide.with(mContext).load(itemData.getThumbnail_pic_s02()).into(image2);
-        Glide.with(mContext).load(itemData.getThumbnail_pic_s03()).into(image3);
+        Glide.with(mContext).load(itemData.getThumbnail_pic_s()).into(image);
+        //Glide.with(mContext).load(itemData.getThumbnail_pic_s02()).into(image2);
+        //Glide.with(mContext).load(itemData.getThumbnail_pic_s03()).into(image3);
         title.setText(itemData.getTitle());
         source.setText(itemData.getAuthor_name());
         time.setText(itemData.getDate());

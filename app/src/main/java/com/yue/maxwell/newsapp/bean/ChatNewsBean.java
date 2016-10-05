@@ -3,6 +3,7 @@ package com.yue.maxwell.newsapp.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +19,10 @@ import java.util.List;
  * 修改人：
  */
 
-public class ChatNewsBean implements Parcelable {
+public class ChatNewsBean implements Serializable{
 
 
+    private static final long serialVersionUID = -5993423174122218291L;
     private int code;
     private String text;
     private List<ListBean> list;
@@ -50,82 +52,23 @@ public class ChatNewsBean implements Parcelable {
     }
 
 
-    protected ChatNewsBean(Parcel in) {
-        code = in.readInt();
-        text = in.readString();
-        if(list == null){
-            list = new ArrayList<>();
-        }
-        in.readTypedList(list, ListBean.CREATOR);
-
-    }
-
-    public static final Creator<ChatNewsBean> CREATOR = new Creator<ChatNewsBean>() {
-        @Override
-        public ChatNewsBean createFromParcel(Parcel in) {
-            return new ChatNewsBean(in);
-        }
-
-        @Override
-        public ChatNewsBean[] newArray(int size) {
-            return new ChatNewsBean[size];
-        }
-    };
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(code);
-        parcel.writeString(text);
-        parcel.writeTypedList(list);
-
-    }
 
 
 
 
 
 
-    public static class ListBean implements Parcelable {
+
+    public static class ListBean implements Serializable{
+        private static final long serialVersionUID = 2294447727041520115L;
+
         private String article;
         private String source;
         private String icon;
         private String detailurl;
 
-        protected ListBean(Parcel in) {
-            article = in.readString();
-            source = in.readString();
-            icon = in.readString();
-            detailurl = in.readString();
-        }
 
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(article);
-            dest.writeString(source);
-            dest.writeString(icon);
-            dest.writeString(detailurl);
-        }
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
-            @Override
-            public ListBean createFromParcel(Parcel in) {
-                return new ListBean(in);
-            }
-
-            @Override
-            public ListBean[] newArray(int size) {
-                return new ListBean[size];
-            }
-        };
 
         public String getArticle() {
             return article;

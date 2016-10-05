@@ -22,4 +22,10 @@ public class Constants {
     public static final String BASE_URL_JUHE = "http://v.juhe.cn/toutiao/";
     public static final String BASE_URL_TULING = "http://www.tuling123.com/openapi/";
     public static final String TULING_APIKEY = "a94cd05c72a945c59687360ba20d1e9d";
+
+    public static final String USER_NAME = "USER_NAME";
+    public static final String USER_PWD = "USER_PWD";
+    public static final String HAS_USER = "HAS_USER";
+    public static final String REMEMBER_PWD = "REMEMBER_PWD";
+
 }

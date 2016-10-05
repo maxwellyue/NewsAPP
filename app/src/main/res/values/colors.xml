@@ -10,8 +10,8 @@
     <color name="common_lv_divider_bg">#d2cdcd</color>
     <color name="white">#ffffff</color>
     <color name="tv_news_tilte_color">#212121</color>
-    <color name="tv_news_source_color">#6c6b6b</color>
-    <color name="tv_news_time_color">#6c6b6b</color>
+    <color name="tv_news_source_color">#9f9c9c</color>
+    <color name="tv_news_time_color">#9f9c9c</color>
     <color name="tab_background">#ffffff</color>
     <color name="tab_text_select">#303F9F</color>
     <color name="tab_text_normal">#838080</color>
@@ -36,5 +36,12 @@
     <color name="toolbar_activity_chat_title">#ffffff</color>
     <color name="chat_tv_timer_bg">#a0b648</color>
     <color name="chat_tv_timer">#a65c08</color>
+    <color name="et_hint_chat_user">#797777</color>
+    <color name="et_chat_user_name">#434040</color>
+    <color name="chat_fragment_bg">#F2F2F2</color>
+    <color name="chat_fragment_checkbox_text">#7c7c7c</color>
+    <color name="chat_fragment_goto">#ffffff</color>
+    <color name="chat_fragment_tv_goto_bg_enable">#3F51B5</color>
+    <color name="chat_fragment_tv_goto_bg">#a7b1ea</color>
 
 </resources>

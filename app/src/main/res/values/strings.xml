@@ -4,4 +4,6 @@
     <string name="bt_chat_send">发送</string>
     <string name="chat_init_hint2">快点和我聊天呀</string>
     <string name="chat_init_hint1">饭在锅里，我在床上</string>
+    <string name="et_hint_chat_user_pwd">输入密码</string>
+    <string name="et_hint_chat_user_name">输入名字</string>
 </resources>

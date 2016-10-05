@@ -4,6 +4,8 @@ import android.os.Parcelable;
 
 import com.yue.maxwell.newsapp.bean.ChatMsg;
 
+import java.util.List;
+
 /**
  * 2016/10/3 0003，由 Administrator 创建 .
  * <p>
@@ -16,8 +18,13 @@ import com.yue.maxwell.newsapp.bean.ChatMsg;
  * 修改人：
  */
 
-public interface ChatView<T extends Parcelable> {
+public interface ChatView<T> {
 
     void addMsgItem(ChatMsg<T> replyMsg);
+
+    void addMsgItem(List<ChatMsg<T>> replyMsg);
+
     void showErrorMsg(String errorMsg);
+
+    void clearMsg();
 }
