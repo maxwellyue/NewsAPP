@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yue.maxwell.newsapp.R;
@@ -16,6 +17,7 @@ import com.yue.maxwell.newsapp.chat.presenter.ChatPresenter;
 import com.yue.maxwell.newsapp.chat.presenter.ChatPresenterImpl;
 import com.yue.maxwell.newsapp.chat.view.ChatView;
 import com.yue.maxwell.newsapp.utils.FileUtil;
+import com.yue.maxwell.newsapp.utils.SoftKeyboardStateWatcher;
 import com.yue.maxwell.newsapp.utils.ToastUtil;
 
 import java.io.File;
@@ -46,6 +48,10 @@ import rx.schedulers.Schedulers;
  */
 
 public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
+
+    @BindView(R.id.activity_chat_root)
+    RelativeLayout mRootLayout;
+
 
     @BindView(R.id.lv_activity_chat)
     ListView mListView;
@@ -139,6 +145,21 @@ public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
                     .show();
 
         });
+
+        final SoftKeyboardStateWatcher watcher = new SoftKeyboardStateWatcher(mRootLayout);
+        watcher.addSoftKeyboardStateListener(
+                new SoftKeyboardStateWatcher.SoftKeyboardStateListener() {
+                    @Override
+                    public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+                        mListView.setSelectionFromTop(mListAdapter.getCount() - 1, 0);
+                    }
+
+                    @Override
+                    public void onSoftKeyboardClosed() {
+
+                    }
+                }
+        );
 
     }
 

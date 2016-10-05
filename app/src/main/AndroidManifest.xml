@@ -19,13 +19,11 @@
             android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".news.widget.NewsContentActivity"/>
-        <activity android:windowSoftInputMode="adjustResize"
-                  android:name=".chat.widget.ChatListActivity"/>
+        <activity android:name=".chat.widget.ChatListActivity"/>
     </application>
 
 </manifest>

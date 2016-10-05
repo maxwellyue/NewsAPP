@@ -1,12 +1,38 @@
 package com.yue.maxwell.newsapp.utils;
 
+import android.content.Context;
 import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import com.yue.maxwell.newsapp.application.NewsApplication;
 
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+使用方式示例：
+其中，mRootLayout为xml布局文件中的顶层布局（根布局）
+
+         final SoftKeyboardStateWatcher watcher = new SoftKeyboardStateWatcher(mRootLayout);
+                watcher.addSoftKeyboardStateListener(
+                        new SoftKeyboardStateWatcher.SoftKeyboardStateListener() {
+                            @Override
+                            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+                                mListView.setSelectionFromTop(mListAdapter.getCount() - 1, 0);
+                            }
+
+                            @Override
+                            public void onSoftKeyboardClosed() {
+
+                            }
+                        }
+                );
+
+
+*/
 public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayoutListener {
 
     public interface SoftKeyboardStateListener {
@@ -31,15 +57,29 @@ public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayout
 
     @Override
     public void onGlobalLayout() {
-        final Rect r = new Rect();
+
+       /*
+       如果是这种方式的话，软键盘必须设置为android:windowSoftInputMode=”adjustResize” 才有效
+
+       int heightDiff = activityRootView.getRootView().getHeight() - activityRootView.getHeight();
+        if (!isSoftKeyboardOpened && heightDiff > dpToPx(NewsApplication.getContext(), 200)) { // if more than 200 dp, it's probably a keyboard...
+            isSoftKeyboardOpened = true;
+            notifyOnSoftKeyboardOpened(heightDiff);
+        }else if(isSoftKeyboardOpened && heightDiff < dpToPx(NewsApplication.getContext(), 200)){
+            isSoftKeyboardOpened = false;
+            notifyOnSoftKeyboardClosed();
+        }*/
+
+        //软键盘没有设置要求
+       final Rect r = new Rect();
         //r will be populated with the coordinates of your view that area still visible.
         activityRootView.getWindowVisibleDisplayFrame(r);
 
         final int heightDiff = activityRootView.getRootView().getHeight() - (r.bottom - r.top);
-        if (!isSoftKeyboardOpened && heightDiff > 100) { // if more than 100 pixels, its probably a keyboard...
+        if (!isSoftKeyboardOpened && heightDiff > dpToPx(NewsApplication.getContext(), 200)) { // if more than 100 pixels, its probably a keyboard...
             isSoftKeyboardOpened = true;
             notifyOnSoftKeyboardOpened(heightDiff);
-        } else if (isSoftKeyboardOpened && heightDiff < 100) {
+        } else if (isSoftKeyboardOpened && heightDiff < dpToPx(NewsApplication.getContext(), 200)) {
             isSoftKeyboardOpened = false;
             notifyOnSoftKeyboardClosed();
         }
@@ -86,5 +126,10 @@ public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayout
                 listener.onSoftKeyboardClosed();
             }
         }
+    }
+
+    public static float dpToPx(Context context, float valueInDp) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, valueInDp, metrics);
     }
 }

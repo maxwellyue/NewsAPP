@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:id="@+id/activity_main_root"
+    android:id="@+id/activity_chat_root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,19 +19,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:padding="6dp"
-                android:layout_centerVertical="true"
                 android:id="@+id/iv_toolbar_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
+                android:padding="6dp"
                 android:src="@drawable/arrow_back_white"/>
             <TextView
-                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
@@ -39,31 +39,33 @@
                 android:textColor="@color/toolbar_activity_chat_title"
                 android:textSize="16sp"/>
             <ImageView
-                android:padding="6dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_centerVertical="true"
+                android:id="@+id/iv_toolbar_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:id="@+id/iv_toolbar_delete"
-                android:src="@drawable/delete_white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="6dp"
+                android:src="@drawable/delete_white"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <!--聊天内容显示区域-->
     <ListView
         android:id="@+id/lv_activity_chat"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/ll_activity_chat_opratearea"
         android:layout_below="@+id/toolbar_activity_main"
         android:clipToPadding="false"
         android:divider="@color/chat_bg"
         android:dividerHeight="@dimen/chat_item"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:transcriptMode="normal"/>
+
+    <!--聊天内容显示区域-->
 
     <!--下方输入文字、发送区域-->
     <android.support.v7.widget.CardView
