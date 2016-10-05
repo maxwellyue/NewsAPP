@@ -2,6 +2,7 @@ package com.yue.maxwell.newsapp.chat.widget;
 
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -16,7 +17,9 @@ import com.yue.maxwell.newsapp.bean.ChatTextBean;
 import com.yue.maxwell.newsapp.chat.presenter.ChatPresenter;
 import com.yue.maxwell.newsapp.chat.presenter.ChatPresenterImpl;
 import com.yue.maxwell.newsapp.chat.view.ChatView;
+import com.yue.maxwell.newsapp.utils.AbsListViewScrollDetector;
 import com.yue.maxwell.newsapp.utils.FileUtil;
+import com.yue.maxwell.newsapp.utils.SoftInputUtil;
 import com.yue.maxwell.newsapp.utils.SoftKeyboardStateWatcher;
 import com.yue.maxwell.newsapp.utils.ToastUtil;
 
@@ -161,6 +164,19 @@ public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
                 }
         );
 
+        mListView.setOnScrollListener(new AbsListViewScrollDetector() {
+
+            @Override
+            public void onScrollDown() {
+
+                SoftInputUtil.closeSoftInput(ChatListActivity.this, mEditText);
+            }
+
+            @Override
+            public void onScrollUp() {
+
+            }
+        });
     }
 
     @Override

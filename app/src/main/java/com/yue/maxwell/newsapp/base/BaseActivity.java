@@ -23,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         //加载布局
@@ -34,6 +35,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         //事件监听
         initEvent();
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //这里主要是防止Fragment重叠，不去保存。。但一般还是处理一下，不要采取这种方式来避免fragment重叠
+        //super.onSaveInstanceState(outState);
     }
 
     public abstract void initView();

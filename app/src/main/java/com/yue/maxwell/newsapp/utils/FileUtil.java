@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.ToDoubleBiFunction;
@@ -49,6 +51,26 @@ public class FileUtil<T> {
         ACache aCache = ACache.get(context);
         aCache.clear();
     }
+
+    public static String getMD5(String val){
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        md5.update(val.getBytes());
+        byte[] m = md5.digest();//加密
+        return getString(m);
+    }
+    private static String getString(byte[] b){
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < b.length; i ++){
+            sb.append(b[i]);
+        }
+        return sb.toString();
+    }
+
 
 }
 
