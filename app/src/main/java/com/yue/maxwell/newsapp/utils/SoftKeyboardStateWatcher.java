@@ -7,9 +7,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-import com.yue.maxwell.newsapp.application.NewsApplication;
-import com.yue.maxwell.newsapp.common.Constants;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,6 +45,7 @@ public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayout
     private boolean    isSoftKeyboardOpened;
     private Context mContext;
 
+    //使用时用这个构造方法
     public SoftKeyboardStateWatcher(View activityRootView, Context context) {
 
         this(activityRootView, false);
@@ -137,7 +135,7 @@ public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayout
         }
     }
 
-    public static float dpToPx(Context context, float valueInDp) {
+    private static float dpToPx(Context context, float valueInDp) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, valueInDp, metrics);
     }

@@ -182,7 +182,7 @@ public class ChatFragment extends BaseFragment {
     }
 
     private boolean isPwdRemembered(){
-        return SPUtil.getBoolean(getActivity(), Constants.REMEMBER_PWD, false);
+        return SPUtil.getBoolean(getActivity(), Constants.REMEMBER_PWD, true);
     }
 
     private String getUserName(){

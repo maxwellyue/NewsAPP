@@ -19,6 +19,7 @@ import com.yue.maxwell.newsapp.chat.presenter.ChatPresenterImpl;
 import com.yue.maxwell.newsapp.chat.view.ChatView;
 import com.yue.maxwell.newsapp.utils.AbsListViewScrollDetector;
 import com.yue.maxwell.newsapp.utils.FileUtil;
+import com.yue.maxwell.newsapp.utils.NetConnectUtil;
 import com.yue.maxwell.newsapp.utils.SoftInputUtil;
 import com.yue.maxwell.newsapp.utils.SoftKeyboardStateWatcher;
 import com.yue.maxwell.newsapp.utils.ToastUtil;
@@ -54,8 +55,6 @@ public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
 
     @BindView(R.id.activity_chat_root)
     RelativeLayout mRootLayout;
-
-
     @BindView(R.id.lv_activity_chat)
     ListView mListView;
     @BindView(R.id.et_activity_chat)
@@ -66,7 +65,6 @@ public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
     ImageView mIvBack;
     @BindView(R.id.iv_toolbar_delete)
     ImageView mIvDelete;
-
 
     private List<ChatMsg<T>> mMsgList = new ArrayList<>();
 
@@ -90,7 +88,12 @@ public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
 
     @Override
     public void showErrorMsg(String errorMsg) {
-        ToastUtil.showShort(errorMsg);
+        if(! NetConnectUtil.isNetConnected(this)){
+            ToastUtil.showShort("连不上网呀");
+        }else {
+            ToastUtil.showShort(errorMsg);
+        }
+
     }
 
     @Override
@@ -103,7 +106,6 @@ public class ChatListActivity<T> extends BaseActivity implements ChatView<T> {
     public void addMsgItem(ChatMsg<T> replyMsg) {
         mMsgList.add(replyMsg);
         notifyChange();
-
     }
 
     @Override
