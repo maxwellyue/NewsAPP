@@ -40,12 +40,12 @@
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/pwd"
         android:hint="@string/et_hint_chat_user_pwd"
-        android:padding="8dp"
         android:inputType="textPassword"
         android:maxLength="16"
+        android:padding="8dp"
         android:textColor="@color/et_chat_user_name"
         android:textColorHint="@color/et_hint_chat_user"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
     <CheckBox
         android:checked="false"
